@@ -95,6 +95,23 @@ const specialChar = [
   '~',
 ];
 
+// Function to get user input regarding the options needed to generate password
+const userOptions = () => {
+  const length = +prompt(
+    'How many characters should password contain? Please enter a length between 8 - 128'
+  );
+  // Validate user entered an integer between 8 - 128
+  if (
+    Number.isInteger(length) === false ||
+    Number.isNaN(length) === true ||
+    length < 8 ||
+    length > 128
+  ) {
+    alert('Character length must be a whole number between 8 and 128');
+    return;
+  }
+};
+
 // Write password to the #password input
 const writePassword = () => {
   const password = generatePassword();
