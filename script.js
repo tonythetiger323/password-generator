@@ -129,7 +129,17 @@ const userOptions = () => {
   const hasSpecial = confirm(
     'Click ok if password should contain special characters.'
   );
+
+  // Validate user selected at least one character type
+  if (!hasLowercase && !hasUppercase && !hasNumber && !hasSpecial) {
+    alert('You must select at least one type of character');
+    return;
+  }
 };
+
+// const generatePassword = () => {
+//   userOptions();
+// };
 
 // Write password to the #password input
 const writePassword = () => {
