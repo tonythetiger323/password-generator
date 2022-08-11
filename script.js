@@ -135,11 +135,81 @@ const userOptions = () => {
     alert('You must select at least one type of character');
     return;
   }
+
+  // store user input in an object and return it
+  const userInput = {
+    length,
+    hasLowercase,
+    hasUppercase,
+    hasNumber,
+    hasSpecial,
+  };
+
+  console.log(userInput);
+
+  return userInput;
 };
 
-// const generatePassword = () => {
-//   userOptions();
-// };
+// function to get a random character from character arrays and return it
+const getRandChar = (arr) => {
+  // generate a random number equal one of the array's indexes
+  const randIndx = Math.floor(Math.random() * arr.length);
+  const randChar = arr[randIndx];
+  return randChar;
+};
+
+// function to generate password given user input
+const generatePassword = () => {
+  // get user options and store in a constant
+  const options = userOptions();
+
+  // array to store the password as its made
+  let generatedPassword = [];
+
+  // array to store characters that can possibly used in password
+  let possible = [];
+
+  // array that contains each type of character to be used
+  const characters = [];
+
+  // if user wants lowercase letters
+  if (options.hasLowercase) {
+    possible = possible.concat(lowercaseChar);
+    characters.push(getRandChar(lowercaseChar));
+  }
+
+  // if user wants uppercase letters
+  if (options.hasUppercase) {
+    possible = possible.concat(uppercaseChar);
+    characters.push(getRandChar(uppercaseChar));
+  }
+
+  // if user wants numeric characters
+  if (options.hasNumber) {
+    possible = possible.concat(numericChar);
+    characters.push(getRandChar(numericChar));
+  }
+  // if user wants special characters
+  if (options.hasSpecial) {
+    possible = possible.concat(specialChar);
+    characters.push(getRandChar(specialChar));
+  }
+
+  console.log(options.length);
+  // Based on length user chose select random indexes from possible array and push to password
+  for (let i = 0; i < options.length; i++) {
+    const passwordChar = getRandChar(possible);
+    generatedPassword.push(passwordChar);
+  }
+  console.log(generatedPassword);
+  // Add one of each from characters array to password
+  for (let i = 0; i < characters.length; i++) {
+    generatedPassword[i] = characters[i];
+  }
+
+  // join password array into a string and return
+  return generatedPassword.join('');
+};
 
 // Write password to the #password input
 const writePassword = () => {
