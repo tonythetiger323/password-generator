@@ -97,6 +97,7 @@ const specialChar = [
 
 // Function to get user input regarding the options needed to generate password
 const userOptions = () => {
+  // Prompt user for desired length of password
   const length = +prompt(
     'How many characters should password contain? Please enter a length between 8 - 128'
   );
