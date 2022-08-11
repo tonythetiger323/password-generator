@@ -111,6 +111,24 @@ const userOptions = () => {
     alert('Character length must be a whole number between 8 and 128');
     return;
   }
+
+  // Prompt user to confirm if should have a lowercase character
+  const hasLowercase = confirm(
+    'Click ok if password should contain lowercase characters.'
+  );
+
+  // Prompt user to confirm if should have an uppercase character
+  const hasUppercase = confirm(
+    'Click ok if password should contain uppercase characters.'
+  );
+
+  // Prompt user to confirm if should have a number
+  const hasNumber = confirm('Click ok if password should contain numbers.');
+
+  // Prompt user to confirm if should have special characters
+  const hasSpecial = confirm(
+    'Click ok if password should contain special characters.'
+  );
 };
 
 // Write password to the #password input
